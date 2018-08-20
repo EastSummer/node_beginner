@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        - var course = 'jade'
+        title #{course.toUpperCase()} study
+    body
+        style.
+            body {color: #66ccff}
+        script.
+            var imoocCourse = 'jade'
+        
+        h1 元素语法
+        div
+            p
+            ul
+                li
+        
+        h1 元素属性
+        h2#title.title1.title2(class='title3') jade study
+        div.classname
+        .classname
+            a(href='http://imooc.com', title='imooc jade study', data-uid='1000') link
+        input(name='course', type='text', value='jade')
+        input(name='type', type='checkbox', checked='checked')
+
+        h1 混排文档
+        p.
+         1. aa
+         2. bb
+        p
+          | 1. aa
+          em ss
+          | 2. bb
+
+        h1 注释
+        // 单行注释
+        //- 非缓冲注释
+        //- 
+            p 块注释
+        
+        h1 转义&非转义
+        - var data = 'text'
+        - var htmlData = '<script>alert(1)</script><span>script</span>'
+        p #{data}
+        p #{htmlData}
+        p !{htmlData}
+        p= data
+        p= htmlData
+        p!= htmlData
+        p \#{htmlData}
+        p \!{htmlData}
+        input(value=newData)
+
+        h1 流程
+        - var obj = {course:'jade', level:'high'}
+        - for (let k in obj)
+            p= obj[k]
+        - each value,key in obj
+            p #{key}: #{value}
+        - var list = ['node', 'jade']
+        each item in list
+            p= item
+        - var n = 0;
+        ul
+            while n<4
+                li= n++
+        - var flag = true
+        if list
+            if list.length > 1
+                p #{list.join(', ')}
+            else
+                p no data
+        unless !flag
+            p #{list.length}
+        - var name = 'jade'
+        case name
+            when 'java'
+            when 'node'
+                p Hi node!
+            when 'jade': p Hi jade!
+            default
+                p No!
+        
