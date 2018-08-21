@@ -7,6 +7,15 @@
     <title>JADE study</title>
   </head>
   <body>
+    <p>imooc jade study extends</p>
+    <div id="runtime"></div>
+    <script src="node_modules/jade/runtime.js"></script>
+    <script src="runtime.js"></script>
+    <script>
+      var runtimeNode = document.getElementById('runtime')
+      var runtimeHtml = template({isRuntime: true})
+      runtimeNode.innerHTML = runtimeHtml
+    </script>
     <style>body {color: #66ccff}</style>
     <script>
       var imoocCourse = 'jade'
@@ -59,5 +68,29 @@
     <p>node, jade</p>
     <p>2</p>
     <p>Hi jade!</p>
+    <h1>mixin</h1>
+        <p>imooc jade study</p>
+        <p>tom study</p>
+        <ul class="courses">
+          <li>jade</li>
+          <li>node</li>
+        </ul>
+        <h4>tom</h4>
+            <p>tom study</p>
+            <ul class="courses">
+              <li>jade</li>
+              <li>node</li>
+            </ul>
+        <h4>slogon</h4>
+        <p>Good job!</p>
+        <p class="magic">attr</p>
+        <p id="attrid" class="magic2">attrs</p>
+        <ul class="magic3">
+          <li>node</li>
+          <li>jade</li>
+          <li>...</li>
+        </ul>
+    <h1>模板继承&覆盖</h1>
+    <p>imooc jade study extends</p>
   </body>
 </html>

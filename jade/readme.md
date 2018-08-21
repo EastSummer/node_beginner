@@ -15,4 +15,18 @@
 2. 自动 jade xxx.jade -P -w
 3. 外部导入变量 jade xxx.jade -P -w -O imooc.json
 
+### 反编译
+1. npm install html2jade -g
+2. html2jade http://www.imoov.com > imooc.jade
 
+### 缺点
+1. 可移植性低
+2. 调试困难
+3. 性能不是非常出色
+
+### 选择的因素
+1. 初始阶段(开发效率)
+2. 稳定阶段(性能和协作成本)
+
+### IMOOC
+1. https://www.imooc.com/learn/259

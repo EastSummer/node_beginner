@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        - var course = 'jade'
-        title #{course.toUpperCase()} study
-    body
+extends layout
+
+block content
+        #runtime
+        script(src='node_modules/jade/runtime.js')
+        script(src='runtime.js')
+        script.
+            var runtimeNode = document.getElementById('runtime')
+            var runtimeHtml = template({isRuntime: true})
+            runtimeNode.innerHTML = runtimeHtml
         style.
             body {color: #66ccff}
         script.
@@ -83,4 +84,46 @@ html(lang="en")
             when 'jade': p Hi jade!
             default
                 p No!
+        
+        h1 mixin
+        mixin lesson
+            p imooc jade study
+        +lesson
+        mixin study(name, courses)
+            p #{name} study
+            ul.courses
+                each course in courses
+                    li= course
+        +study('tom', ['jade', 'node'])
+        mixin group(student)
+            h4 #{student.name}
+            +study(student.name, student.courses)
+        +group({name:'tom', courses:['jade', 'node']})
+
+        mixin team(slogon)
+            h4 #{slogon}
+            if block 
+                block
+            else
+                p no team
+        +team('slogon')
+            p Good job!
+        
+        mixin attr(name)
+            p(class!=attributes.class) #{name}
+        +attr('attr')(class='magic')
+        mixin attrs(name)
+            p&attributes(attributes) #{name}
+        +attrs('attrs')(class='magic2', id='attrid')
+        mixin magic(name, ...items)
+            ul(class='#{name}')
+                each item in items
+                    li= item
+        +magic('magic3', 'node', 'jade', '...')
+
+        h1 模板继承&覆盖
+        block desc
+            p imooc jade study extends
+        
+        
         
